@@ -5,11 +5,21 @@ let started = false;
 let level = 0;
 let h2 = document.querySelector("h2");
 
-document.addEventListener("keypress", function () {
+function startGame() {
     if (!started) {
-        console.log("game is started");
         started = true;
         levelUp();
+    }
+}
+
+document.addEventListener("keydown", startGame);
+
+document.addEventListener("click", function (event) {
+    if (
+        !started &&
+        !event.target.closest(".btn")
+    ) {
+        startGame();
     }
 });
 
